@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECIPHER iKakao - KakaoTalk Forensics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 900: '#0a1628', 800: '#0f1f3d', 700: '#162d52', 600: '#1e3a68' },
+                        cyber: { DEFAULT: '#00d4ff', light: '#66e5ff', dark: '#009ec2' },
+                        amber: { DEFAULT: '#ffa500', light: '#ffb833' },
+                        kakao: '#FEE500',
+                    },
+                    fontFamily: {
+                        display: ['Orbitron', 'sans-serif'],
+                        body: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { scroll-behavior: smooth; }
+        body { font-family: 'Inter', 'Noto Sans KR', sans-serif; }
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .glow { text-shadow: 0 0 20px rgba(0,212,255,0.3); }
+        .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4,0,0.2,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .gradient-border { position: relative; }
+        .gradient-border::before {
+            content: ''; position: absolute; inset: 0; padding: 1px;
+            background: linear-gradient(135deg, rgba(254,229,0,0.4), transparent, rgba(0,212,255,0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            border-radius: inherit; pointer-events: none;
+        }
+        .feature-row { transition: all 0.3s ease; }
+        .feature-row:hover { background: rgba(254,229,0,0.03); }
+
+        /* Screenshot mockup */
+        .mockup-window {
+            background: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+        }
+        .mockup-titlebar {
+            background: #16162a;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+        /* Tabs */
+        .tab-btn { transition: all 0.3s ease; }
+        .tab-btn.active { background: rgba(254,229,0,0.1); color: #FEE500; border-color: rgba(254,229,0,0.3); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-navy-900 text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur bg-navy-900/80 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <img src="../assets/logo.png" alt="DECIPHER" class="h-8 w-8 rounded-lg group-hover:scale-110 transition-transform">
+                    <span class="font-display font-bold text-lg tracking-wider">
+                        <span class="text-cyber">DECI</span><span class="text-white">PHER</span>
+                    </span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="../index.html" class="text-sm text-gray-300 hover:text-cyber transition-colors">Home</a>
+                    <a href="../index.html#products" class="text-sm text-gray-300 hover:text-cyber transition-colors">Products</a>
+                    <a href="#features" class="text-sm text-kakao hover:text-kakao transition-colors font-medium">iKakao</a>
+                    <a href="#download" class="px-4 py-2 bg-kakao/10 text-kakao border border-kakao/30 rounded-lg text-sm font-medium hover:bg-kakao/20 transition-all">
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-24 pb-16 relative bg-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[60vh]">
+                <!-- Left: Text -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-kakao/10 flex items-center justify-center">
+                            <span class="text-3xl">💬</span>
+                        </div>
+                        <div>
+                            <h1 class="font-display font-black text-3xl sm:text-4xl">
+                                <span class="text-cyber">i</span>Kakao
+                            </h1>
+                            <p class="text-xs text-gray-500 mt-0.5">KakaoTalk Forensics Tool</p>
+                        </div>
+                        <span class="ml-3 text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-emerald-500">Available</span>
+                    </div>
+
+                    <h2 class="text-xl sm:text-2xl font-bold text-gray-200 mb-4 leading-snug">
+                        iOS 카카오톡 데이터를<br>
+                        <span class="text-kakao">완벽하게 분석</span>합니다.
+                    </h2>
+
+                    <p class="text-gray-400 mb-8 leading-relaxed max-w-lg">
+                        iTunes 백업에서 카카오톡 메시지를 추출하고 분석합니다.
+                        일반 채팅, 오픈 채팅, 삭제된 메시지, 이미지까지 -
+                        포렌식 무결성을 유지하며 모든 데이터에 접근합니다.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">일반 채팅</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">오픈 채팅</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">삭제 메시지</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">이미지 복원</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">iTunes 백업</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">SQLite 내보내기</span>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <a href="#download" class="px-6 py-3 bg-gradient-to-r from-kakao to-yellow-400 text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-kakao/25 transition-all hover:-translate-y-0.5">
+                            다운로드
+                        </a>
+                        <a href="#features" class="px-6 py-3 border border-white/20 text-white rounded-xl hover:border-kakao/50 hover:text-kakao transition-all hover:-translate-y-0.5">
+                            기능 보기 →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: App Mockup -->
+                <div class="reveal">
+                    <div class="mockup-window">
+                        <div class="mockup-titlebar">
+                            <div class="mockup-dot bg-red-500"></div>
+                            <div class="mockup-dot bg-yellow-500"></div>
+                            <div class="mockup-dot bg-green-500"></div>
+                            <span class="text-xs text-gray-500 ml-2 font-mono">DECIPHER-iKakao</span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <!-- Simulated chat view -->
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-full bg-kakao/20 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xs">👤</span>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-500 mb-1">홍길동 · 2026.02.21 14:32</p>
+                                    <div class="bg-white/10 rounded-lg rounded-tl-none px-3 py-2 text-sm text-gray-300 max-w-xs">
+                                        안녕하세요! 내일 회의 시간 확인해 주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 items-start justify-end">
+                                <div>
+                                    <p class="text-[10px] text-gray-500 mb-1 text-right">나 · 2026.02.21 14:33</p>
+                                    <div class="bg-kakao/20 rounded-lg rounded-tr-none px-3 py-2 text-sm text-gray-200 max-w-xs">
+                                        네, 오후 3시에 만나요! 📋
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xs">🗑️</span>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-500 mb-1">김영희 · 2026.02.21 15:01</p>
+                                    <div class="bg-red-500/10 border border-red-500/20 rounded-lg rounded-tl-none px-3 py-2 text-sm text-red-300 max-w-xs">
+                                        <span class="text-[10px] text-red-400 font-mono">[DELETED]</span> 삭제된 메시지가 복원되었습니다
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-full bg-kakao/20 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xs">👤</span>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-500 mb-1">홍길동 · 2026.02.21 15:15</p>
+                                    <div class="bg-white/5 rounded-lg rounded-tl-none p-2 max-w-xs">
+                                        <div class="w-40 h-24 bg-navy-700 rounded flex items-center justify-center text-gray-500 text-xs">
+                                            🖼️ image_recovered.jpg
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Detail -->
+    <section id="features" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-kakao font-display text-sm tracking-[0.3em] uppercase mb-3">Features</p>
+                <h2 class="text-3xl font-bold mb-4">주요 기능</h2>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap gap-2 justify-center mb-10 reveal">
+                <button class="tab-btn active px-4 py-2 rounded-lg border border-white/10 text-sm font-medium" data-tab="general">
+                    일반 채팅
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="openchat">
+                    오픈 채팅
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="media">
+                    미디어 & 이미지
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="analysis">
+                    분석 & 내보내기
+                </button>
+            </div>
+
+            <!-- Tab Content: General Chat -->
+            <div class="tab-content active" id="tab-general">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 reveal">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-kakao/10 flex items-center justify-center text-kakao">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                            </div>
+                            <h3 class="font-semibold">메시지 분석</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">Message.sqlite과 Talk.sqlite에서 모든 채팅 메시지를 추출하고 분석합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 reveal">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                            </div>
+                            <h3 class="font-semibold">삭제 메시지 복원</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">"나에게만 삭제"와 "전체 삭제"를 정확히 구분하여 삭제된 메시지를 복원합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 reveal">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                            </div>
+                            <h3 class="font-semibold">사용자 ID 매핑</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">친구 데이터베이스와 교차 참조하여 사용자 ID를 실제 이름과 매핑합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 reveal">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-amber/10 flex items-center justify-center text-amber">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            </div>
+                            <h3 class="font-semibold">암호화 백업 지원</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">iTunes 암호화 백업과 비암호화 백업 모두 자동으로 처리합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: OpenChat -->
+            <div class="tab-content" id="tab-openchat">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-cyber/10 flex items-center justify-center text-cyber">💬</div>
+                            <h3 class="font-semibold">오픈 채팅 분석</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">별도로 암호화된 OpenChatMessage.sqlite 데이터베이스를 분석합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">🔑</div>
+                            <h3 class="font-semibold">키체인 추출</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">iOS 키체인에서 오픈 채팅 분석에 필요한 키를 자동으로 추출합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">📊</div>
+                            <h3 class="font-semibold">대화 이벤트</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">입장, 퇴장, 강퇴, 초대 등 대화 이벤트를 사용자 이름과 함께 표시합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">🔍</div>
+                            <h3 class="font-semibold">DB 조인 분석</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">오픈 채팅 DB의 복잡한 관계를 자동으로 해석하고 연결합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Media -->
+            <div class="tab-content" id="tab-media">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">🖼️</div>
+                            <h3 class="font-semibold">이미지 자동 매핑</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">암호화된 이미지 파일을 원본 메시지와 자동으로 매핑하여 표시합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400">🔎</div>
+                            <h3 class="font-semibold">이미지 뷰어</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">썸네일 미리보기와 원본 이미지 확대 뷰어를 제공합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400">📁</div>
+                            <h3 class="font-semibold">채팅 디렉토리 복원</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">Manifest.db 기반으로 백업 구조를 해석하고 채팅 디렉토리를 재구성합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">📎</div>
+                            <h3 class="font-semibold">다양한 메시지 타입</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">사진, 동영상, 음성, 위치, 연락처, 이모티콘 등 모든 메시지 타입을 처리합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Analysis -->
+            <div class="tab-content" id="tab-analysis">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">🔍</div>
+                            <h3 class="font-semibold">강력한 검색</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">메시지, 채팅방, 친구 검색. 하이라이트 표시와 디바운스로 빠른 검색.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400">📊</div>
+                            <h3 class="font-semibold">분석 실패 검사</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">분석에 실패한 메시지를 채팅방별로 정리하여 보여줍니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400">💾</div>
+                            <h3 class="font-semibold">SQLite 내보내기</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">분석 결과를 독립 SQLite 데이터베이스로 내보내 안전하게 보관합니다.</p>
+                    </div>
+                    <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400">⏱️</div>
+                            <h3 class="font-semibold">타임라인 재구성</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">복잡한 검색 필터링과 함께 대화의 시간순 타임라인을 재구성합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Files -->
+    <section class="py-16 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-900 via-navy-800/30 to-navy-900"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 reveal">
+                <h2 class="text-2xl font-bold mb-3">지원 파일 형식</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+                <div class="bg-navy-800/40 rounded-lg p-4 border border-white/5 text-center">
+                    <p class="font-mono text-sm text-kakao mb-1">Message.sqlite</p>
+                    <p class="text-xs text-gray-500">암호화된 일반 채팅</p>
+                </div>
+                <div class="bg-navy-800/40 rounded-lg p-4 border border-white/5 text-center">
+                    <p class="font-mono text-sm text-cyber mb-1">Talk.sqlite</p>
+                    <p class="text-xs text-gray-500">일반 텍스트 채팅</p>
+                </div>
+                <div class="bg-navy-800/40 rounded-lg p-4 border border-white/5 text-center">
+                    <p class="font-mono text-sm text-purple-400 mb-1">OpenChatMessage.sqlite</p>
+                    <p class="text-xs text-gray-500">암호화된 오픈 채팅</p>
+                </div>
+                <div class="bg-navy-800/40 rounded-lg p-4 border border-white/5 text-center">
+                    <p class="font-mono text-sm text-amber mb-1">Manifest.db</p>
+                    <p class="text-xs text-gray-500">iTunes 백업 매니페스트</p>
+                </div>
+                <div class="bg-navy-800/40 rounded-lg p-4 border border-white/5 text-center">
+                    <p class="font-mono text-sm text-green-400 mb-1">chat directory</p>
+                    <p class="text-xs text-gray-500">이미지 & 미디어 파일</p>
+                </div>
+                <div class="bg-navy-800/40 rounded-lg p-4 border border-white/5 text-center">
+                    <p class="font-mono text-sm text-red-400 mb-1">Keychain</p>
+                    <p class="text-xs text-gray-500">iOS 키체인 데이터</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-24 relative">
+        <div class="max-w-3xl mx-auto px-4 text-center reveal">
+            <div class="bg-navy-800/60 rounded-3xl p-10 lg:p-14 border border-white/5 gradient-border">
+                <div class="w-16 h-16 rounded-2xl bg-kakao/10 flex items-center justify-center mx-auto mb-6">
+                    <span class="text-3xl">💬</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2">
+                    DECIPHER <span class="text-kakao">iKakao</span>
+                </h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+                    Windows 전용. 단일 실행 파일로 별도 설치가 필요 없습니다.
+                </p>
+
+                <div class="bg-navy-900/60 rounded-xl p-5 mb-8 text-left max-w-sm mx-auto">
+                    <h4 class="text-sm font-semibold text-gray-300 mb-3">시스템 요구사항</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <span class="text-kakao">•</span> Windows 10/11
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-kakao">•</span> iTunes 설치 (백업용)
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-kakao">•</span> iOS 기기 백업 파일
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="#" class="inline-block px-8 py-3.5 bg-gradient-to-r from-kakao to-yellow-400 text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-kakao/25 transition-all hover:-translate-y-0.5">
+                    DECIPHER-iKakao.exe 다운로드
+                </a>
+                <p class="text-xs text-gray-600 mt-3">v1.0 · Windows · Single EXE</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <img src="../assets/logo.png" alt="DECIPHER" class="h-6 w-6 rounded">
+                    <span class="font-display font-bold text-sm tracking-wider">
+                        <span class="text-cyber">DECI</span><span class="text-gray-400">PHER</span>
+                    </span>
+                </a>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="../index.html" class="hover:text-gray-300 transition-colors">Home</a>
+                    <a href="../index.html#products" class="hover:text-gray-300 transition-colors">All Products</a>
+                    <a href="#features" class="hover:text-gray-300 transition-colors">Features</a>
+                </div>
+                <p class="text-xs text-gray-600">&copy; 2026 DECIPHER. iOS Messenger Forensics.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
