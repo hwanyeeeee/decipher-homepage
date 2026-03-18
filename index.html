@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <title>DECIPHER - iOS Messenger Forensics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -30,35 +33,59 @@
         }
     </script>
     <style>
-        * { scroll-behavior: smooth; }
-        body { font-family: 'Inter', 'Noto Sans KR', sans-serif; }
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        }
 
         /* Animated background grid */
         .bg-grid {
             background-image:
-                linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
         }
 
         /* Glowing text */
-        .glow { text-shadow: 0 0 20px rgba(0,212,255,0.4), 0 0 60px rgba(0,212,255,0.15); }
-        .glow-amber { text-shadow: 0 0 20px rgba(255,165,0,0.3), 0 0 40px rgba(255,165,0,0.1); }
+        .glow {
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.4), 0 0 60px rgba(0, 212, 255, 0.15);
+        }
+
+        .glow-amber {
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.3), 0 0 40px rgba(255, 165, 0, 0.1);
+        }
 
         /* Floating particles */
         .particle {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: rgba(0,212,255,0.5);
+            background: rgba(0, 212, 255, 0.5);
             border-radius: 50%;
             animation: float linear infinite;
         }
+
         @keyframes float {
-            0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10%  { opacity: 1; }
-            90%  { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* Binary rain */
@@ -66,28 +93,43 @@
             position: absolute;
             font-family: 'Orbitron', monospace;
             font-size: 10px;
-            color: rgba(0,212,255,0.07);
+            color: rgba(0, 212, 255, 0.07);
             animation: rain linear infinite;
             user-select: none;
             pointer-events: none;
             white-space: nowrap;
         }
+
         @keyframes rain {
-            0%   { transform: translateY(-120px); opacity: 0; }
-            5%   { opacity: 1; }
-            95%  { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+            0% {
+                transform: translateY(-120px);
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
 
         /* Card hover */
         .product-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0,212,255,0.1);
+            border: 1px solid rgba(0, 212, 255, 0.1);
         }
+
         .product-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(0,212,255,0.3);
-            box-shadow: 0 20px 60px rgba(0,212,255,0.1), 0 0 30px rgba(0,212,255,0.05);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.1), 0 0 30px rgba(0, 212, 255, 0.05);
         }
 
         /* Scroll reveal */
@@ -96,25 +138,32 @@
             transform: translateY(30px);
             transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
         /* Feature icon hover */
-        .feature-icon { transition: all 0.3s ease; }
-        .feature-icon:hover { filter: drop-shadow(0 0 15px currentColor); }
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+
+        .feature-icon:hover {
+            filter: drop-shadow(0 0 15px currentColor);
+        }
 
         /* Gradient border via pseudo-element */
         .gradient-border {
             position: relative;
         }
+
         .gradient-border::before {
             content: '';
             position: absolute;
             inset: 0;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(0,212,255,0.3), transparent, rgba(255,165,0,0.3));
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), transparent, rgba(255, 165, 0, 0.3));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -129,11 +178,22 @@
         }
 
         /* Pulse ring */
-        .pulse-ring { animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
         @keyframes pulse-ring {
-            0%   { box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
-            70%  { box-shadow: 0 0 0 15px rgba(0,212,255,0); }
-            100% { box-shadow: 0 0 0 0 rgba(0,212,255,0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 212, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+            }
         }
 
         /* Typewriter */
@@ -141,33 +201,111 @@
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            border-right: 2px solid rgba(0,212,255,0.7);
+            border-right: 2px solid rgba(0, 212, 255, 0.7);
             width: 0;
             animation: typing 2.5s steps(30, end) 0.8s forwards, blink 0.7s step-end infinite;
         }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink  { 50% { border-color: transparent } }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent
+            }
+        }
 
         /* Status badges */
-        .badge-available { background: linear-gradient(135deg, #059669, #10b981); }
-        .badge-coming    { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .badge-available {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .badge-coming {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+
+        .badge-certified {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        /* Certificate modal */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .cert-modal.active {
+            display: flex;
+        }
+
+        .cert-modal img {
+            max-height: 90vh;
+            max-width: 90vw;
+            border-radius: 12px;
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.15);
+        }
+
+        .cert-modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .cert-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
 
         /* How it works: step connector line */
         .step-connector {
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(0,212,255,0.1));
-            margin-top: -2.5rem; /* align with center of step icon */
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.3), rgba(0, 212, 255, 0.1));
+            margin-top: -2.5rem;
+            /* align with center of step icon */
             position: relative;
             top: 2rem;
         }
+
         @media (max-width: 768px) {
-            .step-connector { display: none; }
+            .step-connector {
+                display: none;
+            }
         }
 
-        section { position: relative; overflow: hidden; }
+        section {
+            position: relative;
+            overflow: hidden;
+        }
     </style>
 </head>
+
 <body class="bg-navy-900 text-white">
 
     <!-- Navigation -->
@@ -175,25 +313,30 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <a href="#" class="flex items-center gap-3 group">
-                    <img src="assets/DECIPHER-iOS.jpg" alt="DECIPHER" class="h-8 w-8 rounded-lg group-hover:scale-110 transition-transform">
+                    <img src="assets/DECIPHER-iOS.jpg" alt="DECIPHER"
+                        class="h-8 w-8 rounded-lg group-hover:scale-110 transition-transform">
                     <span class="font-display font-bold text-lg tracking-wider">
                         <span class="text-cyber">DECI</span><span class="text-white">PHER</span>
                     </span>
                 </a>
 
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#home"     class="text-sm text-gray-300 hover:text-cyber transition-colors">Home</a>
+                    <a href="#home" class="text-sm text-gray-300 hover:text-cyber transition-colors">Home</a>
                     <a href="#products" class="text-sm text-gray-300 hover:text-cyber transition-colors">Products</a>
                     <a href="#features" class="text-sm text-gray-300 hover:text-cyber transition-colors">Features</a>
-                    <a href="#roadmap"  class="text-sm text-gray-300 hover:text-cyber transition-colors">Roadmap</a>
-                    <a href="products/ikakao.html" class="px-4 py-2 bg-cyber/10 text-cyber border border-cyber/30 rounded-lg text-sm font-medium hover:bg-cyber/20 transition-all">
+                    <a href="#certification"
+                        class="text-sm text-gray-300 hover:text-amber transition-colors">Certified</a>
+                    <a href="#roadmap" class="text-sm text-gray-300 hover:text-cyber transition-colors">Roadmap</a>
+                    <a href="products/ikakao.html"
+                        class="px-4 py-2 bg-cyber/10 text-cyber border border-cyber/30 rounded-lg text-sm font-medium hover:bg-cyber/20 transition-all">
                         Download
                     </a>
                 </div>
 
                 <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
@@ -201,10 +344,11 @@
 
         <div id="mobileMenu" class="hidden md:hidden bg-navy-800/95 border-t border-white/5">
             <div class="px-4 py-3 space-y-2">
-                <a href="#home"     class="block py-2 text-gray-300 hover:text-cyber">Home</a>
+                <a href="#home" class="block py-2 text-gray-300 hover:text-cyber">Home</a>
                 <a href="#products" class="block py-2 text-gray-300 hover:text-cyber">Products</a>
                 <a href="#features" class="block py-2 text-gray-300 hover:text-cyber">Features</a>
-                <a href="#roadmap"  class="block py-2 text-gray-300 hover:text-cyber">Roadmap</a>
+                <a href="#certification" class="block py-2 text-gray-300 hover:text-amber">Certified</a>
+                <a href="#roadmap" class="block py-2 text-gray-300 hover:text-cyber">Roadmap</a>
                 <a href="products/ikakao.html" class="block py-2 text-cyber">Download</a>
             </div>
         </div>
@@ -212,14 +356,15 @@
 
     <!-- ── Hero ───────────────────────────────────────────── -->
     <section id="home" class="relative min-h-screen flex items-center justify-center bg-grid">
-        <div id="particles"   class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
-        <div id="binaryRain"  class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+        <div id="particles" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+        <div id="binaryRain" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
             <!-- Logo -->
             <div class="mb-8 flex justify-center">
                 <div class="relative">
-                    <img src="assets/DECIPHER-iOS.jpg" alt="DECIPHER" class="w-28 h-28 rounded-2xl shadow-2xl shadow-cyber/20">
+                    <img src="assets/DECIPHER-iOS.jpg" alt="DECIPHER"
+                        class="w-28 h-28 rounded-2xl shadow-2xl shadow-cyber/20">
                     <div class="absolute -inset-2 bg-cyber/10 rounded-3xl blur-xl -z-10"></div>
                 </div>
             </div>
@@ -230,7 +375,8 @@
             </h1>
 
             <!-- Typewriter subtitle -->
-            <p class="text-lg sm:text-xl text-gray-400 mb-2 font-light tracking-wide h-8 flex items-center justify-center">
+            <p
+                class="text-lg sm:text-xl text-gray-400 mb-2 font-light tracking-wide h-8 flex items-center justify-center">
                 <span class="typewriter text-cyber font-medium">iOS Messenger Forensics, Deciphered.</span>
             </p>
             <p class="text-sm text-gray-500 mb-10 max-w-xl mx-auto">
@@ -239,10 +385,12 @@
 
             <!-- CTA -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                <a href="#products" class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5">
+                <a href="#products"
+                    class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5">
                     제품 둘러보기
                 </a>
-                <a href="products/ikakao.html" class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5">
+                <a href="products/ikakao.html"
+                    class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5">
                     iKakao 다운로드 →
                 </a>
             </div>
@@ -267,7 +415,7 @@
         <!-- Scroll indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
         </div>
     </section>
@@ -286,18 +434,22 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
                 <!-- iKakao -->
-                <a href="products/ikakao.html" class="product-card bg-navy-800/60 rounded-2xl p-6 lg:p-8 block group reveal">
+                <a href="products/ikakao.html"
+                    class="product-card bg-navy-800/60 rounded-2xl p-6 lg:p-8 block group reveal">
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-xl bg-kakao/10 flex items-center justify-center overflow-hidden">
-                                <img src="assets/DECIPHER-iKakao.png" alt="iKakao" class="w-12 h-12 rounded-xl object-cover">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-kakao/10 flex items-center justify-center overflow-hidden">
+                                <img src="assets/DECIPHER-iKakao.png" alt="iKakao"
+                                    class="w-12 h-12 rounded-xl object-cover">
                             </div>
                             <div>
                                 <h3 class="font-display font-bold text-lg"><span class="text-cyber">i</span>Kakao</h3>
                                 <p class="text-xs text-gray-500">KakaoTalk Forensics</p>
                             </div>
                         </div>
-                        <span class="badge-available text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider">Available</span>
+                        <span
+                            class="badge-available text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider">Available</span>
                     </div>
 
                     <p class="text-sm text-gray-400 mb-6 leading-relaxed">
@@ -306,26 +458,57 @@
 
                     <div class="space-y-2 mb-6">
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             일반 채팅 &amp; 오픈 채팅 분석
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             삭제된 메시지 복원
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             이미지 &amp; 미디어 복원
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             iTunes 암호화 백업 지원
                         </div>
                     </div>
 
-                    <div class="flex items-center text-cyber text-sm font-medium gap-1.5 group-hover:gap-3 transition-all">
-                        자세히 보기
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    <div class="flex items-center justify-between">
+                        <div
+                            class="flex items-center text-cyber text-sm font-medium gap-1.5 group-hover:gap-3 transition-all">
+                            자세히 보기
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <span
+                            class="badge-certified text-[9px] font-bold px-2 py-0.5 rounded-full text-white tracking-wider flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            공식 등록
+                        </span>
                     </div>
                 </a>
 
@@ -333,15 +516,19 @@
                 <div class="product-card bg-navy-800/60 rounded-2xl p-6 lg:p-8 reveal" style="transition-delay:0.1s">
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-xl bg-line/10 flex items-center justify-center overflow-hidden">
-                                <img src="assets/DECIPHER-iLine.png" alt="iLine" class="w-12 h-12 rounded-xl object-cover">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-line/10 flex items-center justify-center overflow-hidden">
+                                <img src="assets/DECIPHER-iLine.png" alt="iLine"
+                                    class="w-12 h-12 rounded-xl object-cover">
                             </div>
                             <div>
                                 <h3 class="font-display font-bold text-lg"><span class="text-cyber">i</span>Line</h3>
                                 <p class="text-xs text-gray-500">LINE Forensics</p>
                             </div>
                         </div>
-                        <span class="badge-coming text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider">Coming Soon</span>
+                        <span
+                            class="badge-coming text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider">Coming
+                            Soon</span>
                     </div>
 
                     <p class="text-sm text-gray-400 mb-6 leading-relaxed">
@@ -350,15 +537,27 @@
 
                     <div class="space-y-2 mb-6 opacity-40">
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             1:1 채팅 &amp; 그룹 채팅 분석
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             스티커 &amp; 미디어 복원
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             타임라인 재구성
                         </div>
                     </div>
@@ -370,15 +569,20 @@
                 <div class="product-card bg-navy-800/60 rounded-2xl p-6 lg:p-8 reveal" style="transition-delay:0.2s">
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-xl bg-telegram/10 flex items-center justify-center overflow-hidden">
-                                <img src="assets/DECIPHER-iTelegram.jpg" alt="iTelegram" class="w-12 h-12 rounded-xl object-cover">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-telegram/10 flex items-center justify-center overflow-hidden">
+                                <img src="assets/DECIPHER-iTelegram.jpg" alt="iTelegram"
+                                    class="w-12 h-12 rounded-xl object-cover">
                             </div>
                             <div>
-                                <h3 class="font-display font-bold text-lg"><span class="text-cyber">i</span>Telegram</h3>
+                                <h3 class="font-display font-bold text-lg"><span class="text-cyber">i</span>Telegram
+                                </h3>
                                 <p class="text-xs text-gray-500">Telegram Forensics</p>
                             </div>
                         </div>
-                        <span class="badge-coming text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider">Coming Soon</span>
+                        <span
+                            class="badge-coming text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider">Coming
+                            Soon</span>
                     </div>
 
                     <p class="text-sm text-gray-400 mb-6 leading-relaxed">
@@ -387,15 +591,30 @@
 
                     <div class="space-y-2 mb-6 opacity-40">
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             일반 &amp; 비밀 채팅 분석
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             채널 &amp; 그룹 데이터 추출
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                            <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             미디어 &amp; 파일 복원
                         </div>
                     </div>
@@ -417,52 +636,86 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-cyber/20 transition-all reveal">
-                    <div class="w-10 h-10 rounded-lg bg-cyber/10 flex items-center justify-center mb-4 feature-icon text-cyber">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <div
+                    class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-cyber/20 transition-all reveal">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-cyber/10 flex items-center justify-center mb-4 feature-icon text-cyber">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
                     </div>
                     <h3 class="font-semibold text-white mb-2">포렌식 무결성</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">원본 데이터를 절대 변경하지 않는 읽기 전용 분석. 해시 검증으로 증거 보전을 보장합니다.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">원본 데이터를 절대 변경하지 않는 읽기 전용 분석. 해시 검증으로 증거 보전을 보장합니다.
+                    </p>
                 </div>
 
-                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-amber/20 transition-all reveal" style="transition-delay:0.1s">
-                    <div class="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center mb-4 feature-icon text-amber">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-amber/20 transition-all reveal"
+                    style="transition-delay:0.1s">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center mb-4 feature-icon text-amber">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">강력한 데이터 분석</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">암호화된 백업 데이터도 분석 가능. iOS iTunes 암호화 백업을 완벽하게 지원합니다.</p>
+                    <h3 class="font-semibold text-white mb-2">암호화 백업 지원</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">백업 비밀번호를 입력하면 iTunes 암호화 백업도 자동으로 복호화하여 분석합니다.</p>
                 </div>
 
-                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-red-500/20 transition-all reveal" style="transition-delay:0.2s">
-                    <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center mb-4 feature-icon text-red-400">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-red-500/20 transition-all reveal"
+                    style="transition-delay:0.2s">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center mb-4 feature-icon text-red-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
                     </div>
                     <h3 class="font-semibold text-white mb-2">삭제 메시지 복원</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">삭제된 메시지를 복원하고, "나에게만 삭제"와 "전체 삭제"를 정확하게 구분합니다.</p>
                 </div>
 
-                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-green-500/20 transition-all reveal">
-                    <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center mb-4 feature-icon text-green-400">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <div
+                    class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-green-500/20 transition-all reveal">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center mb-4 feature-icon text-green-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
                     </div>
                     <h3 class="font-semibold text-white mb-2">미디어 복원</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">이미지, 동영상 등 미디어 파일을 자동으로 매핑하고 원본 미리보기를 제공합니다.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">채팅 속 이미지와 동영상을 자동으로 찾아 매핑하고, 이미지는 원본 미리보기를 제공합니다.
+                    </p>
                 </div>
 
-                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-purple-500/20 transition-all reveal" style="transition-delay:0.1s">
-                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 feature-icon text-purple-400">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-purple-500/20 transition-all reveal"
+                    style="transition-delay:0.1s">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 feature-icon text-purple-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
                     </div>
                     <h3 class="font-semibold text-white mb-2">직관적 인터페이스</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">메신저 원본과 유사한 UI로 자연스럽게 분석. 실시간 진행률, 검색, 필터 기능 제공.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">메신저 원본과 유사한 UI로 자연스럽게 분석. 실시간 진행률, 검색, 필터 기능 제공.
+                    </p>
                 </div>
 
-                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-cyan-500/20 transition-all reveal" style="transition-delay:0.2s">
-                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4 feature-icon text-cyan-400">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-cyan-500/20 transition-all reveal"
+                    style="transition-delay:0.2s">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4 feature-icon text-cyan-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                        </svg>
                     </div>
                     <h3 class="font-semibold text-white mb-2">독립 실행</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">단일 실행 파일로 별도 설치 없이 바로 사용. 분석 결과는 독립 DB로 안전하게 저장.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">단일 실행 파일로 별도 설치 없이 바로 사용. 분석 결과는 독립 DB로 안전하게 저장.
+                    </p>
                 </div>
             </div>
         </div>
@@ -483,11 +736,12 @@
 
                 <!-- Step 1 -->
                 <div class="flex-1 text-center reveal px-4">
-                    <div class="w-16 h-16 rounded-2xl bg-navy-700 border border-cyber/20 flex items-center justify-center mx-auto mb-4 pulse-ring">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-navy-700 border border-cyber/20 flex items-center justify-center mx-auto mb-4 pulse-ring">
                         <span class="font-display text-cyber font-bold text-xl">01</span>
                     </div>
                     <h3 class="font-semibold text-white mb-2">백업 선택</h3>
-                    <p class="text-sm text-gray-400">iTunes 백업 폴더를 선택하고 백업 비밀번호를 입력합니다.</p>
+                    <p class="text-sm text-gray-400">iTunes 백업 폴더를 선택합니다. 암호화 백업인 경우 비밀번호를 입력합니다.</p>
                 </div>
 
                 <!-- Connector -->
@@ -495,7 +749,8 @@
 
                 <!-- Step 2 -->
                 <div class="flex-1 text-center reveal px-4" style="transition-delay:0.15s">
-                    <div class="w-16 h-16 rounded-2xl bg-navy-700 border border-amber/20 flex items-center justify-center mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-navy-700 border border-amber/20 flex items-center justify-center mx-auto mb-4">
                         <span class="font-display text-amber font-bold text-xl">02</span>
                     </div>
                     <h3 class="font-semibold text-white mb-2">자동 분석</h3>
@@ -507,16 +762,108 @@
 
                 <!-- Step 3 -->
                 <div class="flex-1 text-center reveal px-4" style="transition-delay:0.3s">
-                    <div class="w-16 h-16 rounded-2xl bg-navy-700 border border-green-500/20 flex items-center justify-center mx-auto mb-4">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-navy-700 border border-green-500/20 flex items-center justify-center mx-auto mb-4">
                         <span class="font-display text-green-400 font-bold text-xl">03</span>
                     </div>
                     <h3 class="font-semibold text-white mb-2">결과 확인</h3>
-                    <p class="text-sm text-gray-400">메시지, 미디어, 메타데이터를 직관적인 UI로 확인합니다.</p>
+                    <p class="text-sm text-gray-400">메시지, 미디어, 메타데이터를 UI로 확인합니다.</p>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- ── Certification ───────────────────────────────────── -->
+    <section id="certification" class="py-24 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-900 via-navy-800/50 to-navy-900"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-amber font-display text-sm tracking-[0.3em] uppercase mb-3">Certified</p>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">공식 등록 프로그램</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">한국저작권위원회에 정식 등록된 컴퓨터프로그램저작물입니다.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center reveal">
+                <!-- Certificate image -->
+                <div class="lg:w-1/2 flex justify-center">
+                    <button onclick="document.getElementById('certModal').classList.add('active')"
+                        class="group relative cursor-pointer">
+                        <img src="assets/copyright-cert.png" alt="저작권 등록증"
+                            class="w-72 rounded-xl shadow-2xl shadow-amber/10 border border-white/10 group-hover:border-amber/30 transition-all group-hover:scale-[1.02]">
+                        <div
+                            class="absolute inset-0 bg-navy-900/20 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span
+                                class="bg-white/10 backdrop-blur px-4 py-2 rounded-lg text-sm text-white border border-white/20">
+                                <svg class="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                </svg>
+                                크게 보기
+                            </span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Info -->
+                <div class="lg:w-1/2 space-y-6">
+                    <div class="bg-navy-800/60 rounded-xl p-5 border border-amber/10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold text-white text-lg">저작권 등록증</h3>
+                        </div>
+
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex gap-3">
+                                <dt class="text-gray-500 w-24 flex-shrink-0">등록번호</dt>
+                                <dd class="text-white font-mono">C-2026-010422</dd>
+                            </div>
+                            <div class="flex gap-3">
+                                <dt class="text-gray-500 w-24 flex-shrink-0">프로그램명</dt>
+                                <dd class="text-gray-300">DECIPHER-iKakao</dd>
+                            </div>
+                            <div class="flex gap-3">
+                                <dt class="text-gray-500 w-24 flex-shrink-0">종류</dt>
+                                <dd class="text-gray-300">컴퓨터프로그램저작물</dd>
+                            </div>
+                            <div class="flex gap-3">
+                                <dt class="text-gray-500 w-24 flex-shrink-0">저작자</dt>
+                                <dd class="text-gray-300">국립한국해양대학교산학협력단</dd>
+                            </div>
+                            <div class="flex gap-3">
+                                <dt class="text-gray-500 w-24 flex-shrink-0">개발자</dt>
+                                <dd class="text-gray-300">김도현, 박주환</dd>
+                            </div>
+                            <div class="flex gap-3">
+                                <dt class="text-gray-500 w-24 flex-shrink-0">등록일</dt>
+                                <dd class="text-gray-300">2026.02.26</dd>
+                            </div>
+                            <div class="flex gap-3">
+                                <dt class="text-gray-500 w-24 flex-shrink-0">발급기관</dt>
+                                <dd class="text-amber">한국저작권위원회</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="cert-modal" onclick="if(event.target===this)this.classList.remove('active')">
+        <button class="cert-modal-close"
+            onclick="document.getElementById('certModal').classList.remove('active')">&times;</button>
+        <img src="assets/copyright-cert.png" alt="저작권 등록증">
+    </div>
 
     <!-- ── Roadmap ─────────────────────────────────────────── -->
     <section id="roadmap" class="py-24 relative">
@@ -528,17 +875,20 @@
             </div>
 
             <div class="relative">
-                <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-cyber via-amber to-gray-700"></div>
+                <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-cyber via-amber to-gray-700">
+                </div>
 
                 <!-- iKakao -->
                 <div class="relative flex gap-6 mb-12 reveal">
-                    <div class="w-16 h-16 rounded-full bg-cyber/20 border-2 border-cyber flex items-center justify-center flex-shrink-0 z-10 overflow-hidden">
+                    <div
+                        class="w-16 h-16 rounded-full bg-cyber/20 border-2 border-cyber flex items-center justify-center flex-shrink-0 z-10 overflow-hidden">
                         <img src="assets/DECIPHER-iKakao.png" alt="iKakao" class="w-16 h-16 rounded-full object-cover">
                     </div>
                     <div class="bg-navy-800/60 rounded-xl p-5 border border-cyber/20 flex-1">
                         <div class="flex items-center gap-3 mb-2">
                             <h3 class="font-display font-bold text-cyber">iKakao</h3>
-                            <span class="badge-available text-[10px] font-bold px-2 py-0.5 rounded-full text-white">RELEASED</span>
+                            <span
+                                class="badge-available text-[10px] font-bold px-2 py-0.5 rounded-full text-white">RELEASED</span>
                         </div>
                         <p class="text-sm text-gray-400">KakaoTalk 포렌식 도구. 일반 채팅, 오픈 채팅, 이미지 복원, 삭제 메시지 분석까지.</p>
                     </div>
@@ -546,13 +896,15 @@
 
                 <!-- iLine -->
                 <div class="relative flex gap-6 mb-12 reveal" style="transition-delay:0.1s">
-                    <div class="w-16 h-16 rounded-full bg-line/10 border-2 border-line/40 flex items-center justify-center flex-shrink-0 z-10 overflow-hidden">
+                    <div
+                        class="w-16 h-16 rounded-full bg-line/10 border-2 border-line/40 flex items-center justify-center flex-shrink-0 z-10 overflow-hidden">
                         <img src="assets/DECIPHER-iLine.png" alt="iLine" class="w-16 h-16 rounded-full object-cover">
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-5 border border-white/5 flex-1">
                         <div class="flex items-center gap-3 mb-2">
                             <h3 class="font-display font-bold text-gray-300">iLine</h3>
-                            <span class="badge-coming text-[10px] font-bold px-2 py-0.5 rounded-full text-white">PLANNED</span>
+                            <span
+                                class="badge-coming text-[10px] font-bold px-2 py-0.5 rounded-full text-white">PLANNED</span>
                         </div>
                         <p class="text-sm text-gray-400">LINE 메신저 포렌식 도구. 1:1 채팅, 그룹, 스티커, 미디어 분석.</p>
                     </div>
@@ -560,13 +912,16 @@
 
                 <!-- iTelegram -->
                 <div class="relative flex gap-6 mb-12 reveal" style="transition-delay:0.2s">
-                    <div class="w-16 h-16 rounded-full bg-telegram/10 border-2 border-telegram/40 flex items-center justify-center flex-shrink-0 z-10 overflow-hidden">
-                        <img src="assets/DECIPHER-iTelegram.jpg" alt="iTelegram" class="w-16 h-16 rounded-full object-cover">
+                    <div
+                        class="w-16 h-16 rounded-full bg-telegram/10 border-2 border-telegram/40 flex items-center justify-center flex-shrink-0 z-10 overflow-hidden">
+                        <img src="assets/DECIPHER-iTelegram.jpg" alt="iTelegram"
+                            class="w-16 h-16 rounded-full object-cover">
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-5 border border-white/5 flex-1">
                         <div class="flex items-center gap-3 mb-2">
                             <h3 class="font-display font-bold text-gray-300">iTelegram</h3>
-                            <span class="badge-coming text-[10px] font-bold px-2 py-0.5 rounded-full text-white">PLANNED</span>
+                            <span
+                                class="badge-coming text-[10px] font-bold px-2 py-0.5 rounded-full text-white">PLANNED</span>
                         </div>
                         <p class="text-sm text-gray-400">Telegram 포렌식 도구. 일반 채팅, 비밀 채팅, 채널 데이터 분석.</p>
                     </div>
@@ -574,7 +929,8 @@
 
                 <!-- And More -->
                 <div class="relative flex gap-6 reveal" style="transition-delay:0.3s">
-                    <div class="w-16 h-16 rounded-full bg-white/5 border-2 border-white/10 flex items-center justify-center flex-shrink-0 z-10">
+                    <div
+                        class="w-16 h-16 rounded-full bg-white/5 border-2 border-white/10 flex items-center justify-center flex-shrink-0 z-10">
                         <span class="text-xl">🔮</span>
                     </div>
                     <div class="bg-navy-800/20 rounded-xl p-5 border border-white/5 flex-1">
@@ -598,10 +954,12 @@
                     단일 실행 파일, 추가 프로그램 설치 불필요.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="products/ikakao.html" class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5">
+                    <a href="products/ikakao.html"
+                        class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5">
                         iKakao 다운로드
                     </a>
-                    <a href="#products" class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5">
+                    <a href="#products"
+                        class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5">
                         모든 제품 보기
                     </a>
                 </div>
@@ -622,7 +980,8 @@
                 <div class="flex gap-6 text-sm text-gray-500">
                     <a href="#products" class="hover:text-gray-300 transition-colors">Products</a>
                     <a href="#features" class="hover:text-gray-300 transition-colors">Features</a>
-                    <a href="#roadmap"  class="hover:text-gray-300 transition-colors">Roadmap</a>
+                    <a href="#certification" class="hover:text-amber transition-colors">Certified</a>
+                    <a href="#roadmap" class="hover:text-gray-300 transition-colors">Roadmap</a>
                 </div>
                 <p class="text-xs text-gray-600">&copy; 2026 DECIPHER. iOS Messenger Forensics.</p>
             </div>
@@ -631,4 +990,5 @@
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
