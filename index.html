@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DECIPHER - iOS 메신저 포렌식 도구 시리즈. iKakao, iLine, iTelegram.">
+    <meta name="description" content="DECIPHER - iOS 메신저 포렌식 도구 시리즈. iKakao, iLine, iTelegram." data-i18n-attr="content:idx.meta.desc">
     <meta name="robots" content="noindex, nofollow">
     <title>DECIPHER - iOS Messenger Forensics</title>
+    <style>html.i18n-pending body{visibility:hidden}</style>
+    <script>(function(){try{var l=localStorage.getItem('decipher-lang');if(l){document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('data-lang',l);if(l==='en'){document.documentElement.className+=' i18n-pending';setTimeout(function(){document.documentElement.classList.remove('i18n-pending');},2000);}}}catch(e){}})();</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
@@ -327,6 +329,11 @@
                     <a href="#certification"
                         class="text-sm text-gray-300 hover:text-amber transition-colors">Certified &amp; Patented</a>
                     <a href="#roadmap" class="text-sm text-gray-300 hover:text-cyber transition-colors">Roadmap</a>
+                    <div class="flex items-center gap-1 text-xs font-semibold">
+                        <button type="button" data-set-lang="ko" class="px-2 py-1 rounded transition-colors">KO</button>
+                        <span class="text-gray-600">/</span>
+                        <button type="button" data-set-lang="en" class="px-2 py-1 rounded transition-colors">EN</button>
+                    </div>
                     <a href="products/ikakao.html"
                         class="px-4 py-2 bg-cyber/10 text-cyber border border-cyber/30 rounded-lg text-sm font-medium hover:bg-cyber/20 transition-all">
                         Download
@@ -349,6 +356,10 @@
                 <a href="#features" class="block py-2 text-gray-300 hover:text-cyber">Features</a>
                 <a href="#certification" class="block py-2 text-gray-300 hover:text-amber">Certified &amp; Patented</a>
                 <a href="#roadmap" class="block py-2 text-gray-300 hover:text-cyber">Roadmap</a>
+                <div class="flex items-center gap-2 py-2 text-sm font-semibold">
+                    <button type="button" data-set-lang="ko" class="px-2 py-1 rounded transition-colors">KO</button>
+                    <button type="button" data-set-lang="en" class="px-2 py-1 rounded transition-colors">EN</button>
+                </div>
                 <a href="products/ikakao.html" class="block py-2 text-cyber">Download</a>
             </div>
         </div>
@@ -379,18 +390,18 @@
                 class="text-lg sm:text-xl text-gray-400 mb-2 font-light tracking-wide h-8 flex items-center justify-center">
                 <span class="typewriter text-cyber font-medium">iOS Messenger Forensics, Deciphered.</span>
             </p>
-            <p class="text-sm text-gray-500 mb-10 max-w-xl mx-auto">
+            <p class="text-sm text-gray-500 mb-10 max-w-xl mx-auto" data-i18n="idx.hero.desc">
                 iOS 메신저 데이터를 안전하게 분석하는 포렌식 도구 시리즈
             </p>
 
             <!-- CTA -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
                 <a href="#products"
-                    class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5">
+                    class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5" data-i18n="idx.hero.cta1">
                     제품 둘러보기
                 </a>
                 <a href="products/ikakao.html"
-                    class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5">
+                    class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5" data-i18n="idx.hero.cta2">
                     iKakao 다운로드 →
                 </a>
             </div>
@@ -399,15 +410,15 @@
             <div class="grid grid-cols-3 gap-8 max-w-lg mx-auto">
                 <div class="text-center">
                     <div class="font-display text-xl font-bold text-cyber mb-1">iOS</div>
-                    <div class="text-xs text-gray-500 leading-tight">전용 플랫폼</div>
+                    <div class="text-xs text-gray-500 leading-tight" data-i18n="idx.pillar.ios">전용 플랫폼</div>
                 </div>
                 <div class="text-center">
                     <div class="font-display text-xl font-bold text-amber mb-1">Read-Only</div>
-                    <div class="text-xs text-gray-500 leading-tight">포렌식 무결성</div>
+                    <div class="text-xs text-gray-500 leading-tight" data-i18n="idx.pillar.readonly">포렌식 무결성</div>
                 </div>
                 <div class="text-center">
                     <div class="font-display text-xl font-bold text-white mb-1">.exe</div>
-                    <div class="text-xs text-gray-500 leading-tight">단일 실행 파일</div>
+                    <div class="text-xs text-gray-500 leading-tight" data-i18n="idx.pillar.exe">단일 실행 파일</div>
                 </div>
             </div>
         </div>
@@ -427,8 +438,8 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <p class="text-cyber font-display text-sm tracking-[0.3em] uppercase mb-3">Products</p>
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">DECIPHER 시리즈</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">iOS 플랫폼 포렌식도구</p>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="idx.products.title">DECIPHER 시리즈</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-i18n="idx.products.sub">iOS 플랫폼 포렌식도구</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -452,8 +463,8 @@
                             class="badge-available text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider">Available</span>
                     </div>
 
-                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
-                        iOS 카카오톡 백업 데이터를 분석합니다. 일반 채팅, 오픈 채팅 모두 지원하며 삭제된 메시지도 복원합니다.
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed" data-i18n="idx.ikakao.desc">
+                        iOS 카카오톡 백업 데이터를 분석합니다. 일반 채팅, 오픈 채팅 모두 지원하며 잔존 데이터를 기반으로 삭제된 메시지를 복원합니다.
                     </p>
 
                     <div class="space-y-2 mb-6">
@@ -463,7 +474,7 @@
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                     clip-rule="evenodd" />
                             </svg>
-                            일반 채팅 &amp; 오픈 채팅 분석
+                            <span data-i18n="idx.ikakao.f1">일반 채팅 &amp; 오픈 채팅 분석</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
                             <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -471,7 +482,7 @@
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                     clip-rule="evenodd" />
                             </svg>
-                            삭제된 메시지 복원
+                            <span data-i18n="idx.ikakao.f2">삭제된 메시지 복원</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
                             <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -479,7 +490,7 @@
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                     clip-rule="evenodd" />
                             </svg>
-                            이미지 &amp; 미디어 복원
+                            <span data-i18n="idx.ikakao.f3">이미지 &amp; 미디어 복원</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
                             <svg class="w-3.5 h-3.5 text-kakao flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -487,14 +498,14 @@
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                     clip-rule="evenodd" />
                             </svg>
-                            iTunes 암호화 백업 지원
+                            <span data-i18n="idx.ikakao.f4">iTunes 암호화 백업 지원</span>
                         </div>
                     </div>
 
                     <div class="flex items-center justify-between">
                         <div
                             class="flex items-center text-cyber text-sm font-medium gap-1.5 group-hover:gap-3 transition-all">
-                            자세히 보기
+                            <span data-i18n="idx.ikakao.more">자세히 보기</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -507,7 +518,7 @@
                                     d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                     clip-rule="evenodd" />
                             </svg>
-                            공식 등록
+                            <span data-i18n="common.registered">공식 등록</span>
                         </span>
                     </div>
                 </a>
@@ -531,7 +542,7 @@
                             Soon</span>
                     </div>
 
-                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed" data-i18n="idx.iline.desc">
                         iOS LINE 메신저 백업 데이터를 분석합니다. 채팅, 그룹, 미디어 파일을 포렌식 방식으로 추출합니다.
                     </p>
 
@@ -542,7 +553,7 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                     clip-rule="evenodd" />
                             </svg>
-                            1:1 채팅 &amp; 그룹 채팅 분석
+                            <span data-i18n="idx.iline.f1">1:1 채팅 &amp; 그룹 채팅 분석</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
                             <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -550,7 +561,7 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                     clip-rule="evenodd" />
                             </svg>
-                            스티커 &amp; 미디어 복원
+                            <span data-i18n="idx.iline.f2">스티커 &amp; 미디어 복원</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
                             <svg class="w-3.5 h-3.5 text-line flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -558,11 +569,11 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                     clip-rule="evenodd" />
                             </svg>
-                            타임라인 재구성
+                            <span data-i18n="idx.iline.f3">타임라인 재구성</span>
                         </div>
                     </div>
 
-                    <div class="text-gray-500 text-sm font-medium">개발 예정</div>
+                    <div class="text-gray-500 text-sm font-medium" data-i18n="common.indev">개발 예정</div>
                 </div>
 
                 <!-- iTelegram -->
@@ -585,7 +596,7 @@
                             Soon</span>
                     </div>
 
-                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed" data-i18n="idx.itg.desc">
                         iOS 텔레그램 백업 데이터를 분석합니다. 비밀 채팅, 일반 채팅, 채널 데이터를 포렌식합니다.
                     </p>
 
@@ -597,7 +608,7 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                     clip-rule="evenodd" />
                             </svg>
-                            일반 &amp; 비밀 채팅 분석
+                            <span data-i18n="idx.itg.f1">일반 &amp; 비밀 채팅 분석</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
                             <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor"
@@ -606,7 +617,7 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                     clip-rule="evenodd" />
                             </svg>
-                            채널 &amp; 그룹 데이터 추출
+                            <span data-i18n="idx.itg.f2">채널 &amp; 그룹 데이터 추출</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-gray-400">
                             <svg class="w-3.5 h-3.5 text-telegram flex-shrink-0" fill="currentColor"
@@ -615,11 +626,11 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                     clip-rule="evenodd" />
                             </svg>
-                            미디어 &amp; 파일 복원
+                            <span data-i18n="idx.itg.f3">미디어 &amp; 파일 복원</span>
                         </div>
                     </div>
 
-                    <div class="text-gray-500 text-sm font-medium">개발 예정</div>
+                    <div class="text-gray-500 text-sm font-medium" data-i18n="common.indev">개발 예정</div>
                 </div>
 
             </div>
@@ -631,8 +642,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <p class="text-amber font-display text-sm tracking-[0.3em] uppercase mb-3">Features</p>
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">왜 DECIPHER인가?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">포렌식 전문가를 위한 신뢰할 수 있는 도구</p>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="idx.feat.title">왜 DECIPHER인가?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-i18n="idx.feat.sub">포렌식 전문가를 위한 신뢰할 수 있는 도구</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -645,8 +656,8 @@
                                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">포렌식 무결성</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">원본 데이터를 절대 변경하지 않는 읽기 전용 분석. 해시 검증으로 증거 보전을 보장합니다.
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.feat.1.h">포렌식 무결성</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed" data-i18n="idx.feat.1.d">원본 데이터를 절대 변경하지 않는 읽기 전용 분석. 해시 검증으로 증거 보전을 보장합니다.
                     </p>
                 </div>
 
@@ -659,8 +670,8 @@
                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">암호화 백업 지원</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">백업 비밀번호를 입력하면 iTunes 암호화 백업도 자동으로 복호화하여 분석합니다.</p>
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.feat.2.h">암호화 백업 지원</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed" data-i18n="idx.feat.2.d">백업 비밀번호를 입력하면 iTunes 암호화 백업도 자동으로 복호화하여 분석합니다.</p>
                 </div>
 
                 <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 hover:border-red-500/20 transition-all reveal"
@@ -672,8 +683,8 @@
                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">삭제 메시지 복원</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">삭제된 메시지를 복원하고, "나에게만 삭제"와 "전체 삭제"를 정확하게 구분합니다.</p>
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.feat.3.h">삭제 메시지 복원</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed" data-i18n="idx.feat.3.d">"나에게만 삭제"와 "전체 삭제"를 정확하게 구분하고, 잔존 데이터를 기반으로 삭제된 메시지를 복원합니다.</p>
                 </div>
 
                 <div
@@ -685,8 +696,8 @@
                                 d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">미디어 복원</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">채팅 속 이미지와 동영상을 자동으로 찾아 매핑하고, 이미지는 원본 미리보기를 제공합니다.
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.feat.4.h">미디어 복원</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed" data-i18n="idx.feat.4.d">채팅 속 이미지와 동영상을 자동으로 찾아 매핑하고, 이미지는 원본 미리보기를 제공합니다.
                     </p>
                 </div>
 
@@ -699,8 +710,8 @@
                                 d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">직관적 인터페이스</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">메신저 원본과 유사한 UI로 자연스럽게 분석. 실시간 진행률, 검색, 필터 기능 제공.
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.feat.5.h">직관적 인터페이스</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed" data-i18n="idx.feat.5.d">메신저 원본과 유사한 UI로 자연스럽게 분석. 실시간 진행률, 검색, 필터 기능 제공.
                     </p>
                 </div>
 
@@ -713,8 +724,8 @@
                                 d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">독립 실행</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">단일 실행 파일로 별도 설치 없이 바로 사용. 분석 결과는 독립 DB로 안전하게 저장.
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.feat.6.h">독립 실행</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed" data-i18n="idx.feat.6.d">단일 실행 파일로 별도 설치 없이 바로 사용. 분석 결과는 독립 DB로 안전하게 저장.
                     </p>
                 </div>
             </div>
@@ -728,7 +739,7 @@
         <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <p class="text-cyber font-display text-sm tracking-[0.3em] uppercase mb-3">How It Works</p>
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">간단한 3단계</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="idx.howto.title">간단한 3단계</h2>
             </div>
 
             <!-- Steps: flex row with connector lines between items -->
@@ -740,8 +751,8 @@
                         class="w-16 h-16 rounded-2xl bg-navy-700 border border-cyber/20 flex items-center justify-center mx-auto mb-4 pulse-ring">
                         <span class="font-display text-cyber font-bold text-xl">01</span>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">백업 선택</h3>
-                    <p class="text-sm text-gray-400">iTunes 백업 폴더를 선택합니다. 암호화 백업인 경우 비밀번호를 입력합니다.</p>
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.howto.1.h">백업 선택</h3>
+                    <p class="text-sm text-gray-400" data-i18n="idx.howto.1.d">iTunes 백업 폴더를 선택합니다. 암호화 백업인 경우 비밀번호를 입력합니다.</p>
                 </div>
 
                 <!-- Connector -->
@@ -753,8 +764,8 @@
                         class="w-16 h-16 rounded-2xl bg-navy-700 border border-amber/20 flex items-center justify-center mx-auto mb-4">
                         <span class="font-display text-amber font-bold text-xl">02</span>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">자동 분석</h3>
-                    <p class="text-sm text-gray-400">DECIPHER가 자동으로 데이터를 추출하고 분석합니다.</p>
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.howto.2.h">자동 분석</h3>
+                    <p class="text-sm text-gray-400" data-i18n="idx.howto.2.d">DECIPHER가 자동으로 데이터를 추출하고 분석합니다.</p>
                 </div>
 
                 <!-- Connector -->
@@ -766,8 +777,8 @@
                         class="w-16 h-16 rounded-2xl bg-navy-700 border border-green-500/20 flex items-center justify-center mx-auto mb-4">
                         <span class="font-display text-green-400 font-bold text-xl">03</span>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">결과 확인</h3>
-                    <p class="text-sm text-gray-400">메시지, 미디어, 메타데이터를 UI로 확인합니다.</p>
+                    <h3 class="font-semibold text-white mb-2" data-i18n="idx.howto.3.h">결과 확인</h3>
+                    <p class="text-sm text-gray-400" data-i18n="idx.howto.3.d">메시지, 미디어, 메타데이터를 UI로 확인합니다.</p>
                 </div>
 
             </div>
@@ -781,8 +792,8 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <p class="text-amber font-display text-sm tracking-[0.3em] uppercase mb-3">Certified &amp; Patented</p>
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">공식 등록 &amp; 특허 출원</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">한국저작권위원회 등록과 특허청 출원으로 기술 독창성을 인증받았습니다.</p>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="idx.cert.title">공식 등록 &amp; 특허 출원</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-i18n="idx.cert.sub">한국저작권위원회 등록과 특허청 출원으로 기술 독창성을 인증받았습니다.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
@@ -793,7 +804,7 @@
                         <!-- Certificate image -->
                         <button onclick="document.getElementById('certModal').classList.add('active')"
                             class="group relative cursor-pointer">
-                            <img src="assets/copyright-cert.png" alt="저작권 등록증"
+                            <img src="assets/copyright-cert.png" alt="저작권 등록증" data-i18n-attr="alt:cert.copyright.alt"
                                 class="w-64 rounded-xl shadow-2xl shadow-amber/10 border border-white/10 group-hover:border-amber/30 transition-all group-hover:scale-[1.02]">
                             <div
                                 class="absolute inset-0 bg-navy-900/20 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -804,7 +815,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                                     </svg>
-                                    크게 보기
+                                    <span data-i18n="common.viewlarger">크게 보기</span>
                                 </span>
                             </div>
                         </button>
@@ -819,33 +830,33 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <h3 class="font-semibold text-white text-lg">저작권 등록증</h3>
+                                <h3 class="font-semibold text-white text-lg" data-i18n="cert.copyright.h">저작권 등록증</h3>
                             </div>
 
                             <dl class="space-y-3 text-sm">
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">등록번호</dt>
-                                    <dd class="text-gray-500">비공개</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.regno.label">등록번호</dt>
+                                    <dd class="text-gray-500" data-i18n="common.private">비공개</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">프로그램명</dt>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.program.label">프로그램명</dt>
                                     <dd class="text-gray-300">DECIPHER-iKakao</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">종류</dt>
-                                    <dd class="text-gray-300">컴퓨터프로그램저작물</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.type.label">종류</dt>
+                                    <dd class="text-gray-300" data-i18n="cert.type.val">컴퓨터프로그램저작물</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">저작자</dt>
-                                    <dd class="text-gray-500">비공개</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.author.label">저작자</dt>
+                                    <dd class="text-gray-500" data-i18n="common.private">비공개</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">등록일</dt>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.regdate.label">등록일</dt>
                                     <dd class="text-gray-300">2026.02.26</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">발급기관</dt>
-                                    <dd class="text-amber">한국저작권위원회</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.issuer.label">발급기관</dt>
+                                    <dd class="text-amber" data-i18n="cert.issuer.kcc">한국저작권위원회</dd>
                                 </div>
                             </dl>
                         </div>
@@ -859,7 +870,7 @@
                         <!-- Patent image -->
                         <button onclick="document.getElementById('patentModal').classList.add('active')"
                             class="group relative cursor-pointer">
-                            <img src="assets/patent-application.png" alt="특허 출원공문"
+                            <img src="assets/patent-application.png" alt="특허 출원공문" data-i18n-attr="alt:cert.patent.alt"
                                 class="w-64 rounded-xl shadow-2xl shadow-amber/10 border border-white/10 group-hover:border-amber/30 transition-all group-hover:scale-[1.02]">
                             <div
                                 class="absolute inset-0 bg-navy-900/20 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -870,7 +881,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                                     </svg>
-                                    크게 보기
+                                    <span data-i18n="common.viewlarger">크게 보기</span>
                                 </span>
                             </div>
                         </button>
@@ -887,33 +898,33 @@
                                             d="M13 3v5a1 1 0 001 1h5" />
                                     </svg>
                                 </div>
-                                <h3 class="font-semibold text-white text-lg">특허 출원</h3>
+                                <h3 class="font-semibold text-white text-lg" data-i18n="cert.patent.h">특허 출원</h3>
                             </div>
 
                             <dl class="space-y-3 text-sm">
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">출원번호</dt>
-                                    <dd class="text-gray-500">비공개</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.appno.label">출원번호</dt>
+                                    <dd class="text-gray-500" data-i18n="common.private">비공개</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">발명의 명칭</dt>
-                                    <dd class="text-gray-300 leading-relaxed">iOS 키체인 및 SQLCipher 기반의 카카오톡 오픈채팅 복호화 및 삭제 데이터 복구 방법</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.invtitle.label">발명의 명칭</dt>
+                                    <dd class="text-gray-300 leading-relaxed" data-i18n="cert.invtitle.val">iOS 키체인 및 SQLCipher 기반의 카카오톡 오픈채팅 복호화 및 삭제 데이터 복구 방법</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">출원인</dt>
-                                    <dd class="text-gray-500">비공개</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.applicant.label">출원인</dt>
+                                    <dd class="text-gray-500" data-i18n="common.private">비공개</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">출원일</dt>
-                                    <dd class="text-gray-500">비공개</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.filedate.label">출원일</dt>
+                                    <dd class="text-gray-500" data-i18n="common.private">비공개</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">심사청구일</dt>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.examdate.label">심사청구일</dt>
                                     <dd class="text-gray-300">2026.03.27</dd>
                                 </div>
                                 <div class="flex gap-3">
-                                    <dt class="text-gray-500 w-24 flex-shrink-0">발급기관</dt>
-                                    <dd class="text-amber">특허청 (KIPO)</dd>
+                                    <dt class="text-gray-500 w-24 flex-shrink-0" data-i18n="cert.issuer.label">발급기관</dt>
+                                    <dd class="text-amber" data-i18n="cert.kipo">특허청 (KIPO)</dd>
                                 </div>
                             </dl>
                         </div>
@@ -928,14 +939,14 @@
     <div id="certModal" class="cert-modal" onclick="if(event.target===this)this.classList.remove('active')">
         <button class="cert-modal-close"
             onclick="document.getElementById('certModal').classList.remove('active')">&times;</button>
-        <img src="assets/copyright-cert.png" alt="저작권 등록증">
+        <img src="assets/copyright-cert.png" alt="저작권 등록증" data-i18n-attr="alt:cert.copyright.alt">
     </div>
 
     <!-- Patent Modal -->
     <div id="patentModal" class="cert-modal" onclick="if(event.target===this)this.classList.remove('active')">
         <button class="cert-modal-close"
             onclick="document.getElementById('patentModal').classList.remove('active')">&times;</button>
-        <img src="assets/patent-application.png" alt="특허 출원공문">
+        <img src="assets/patent-application.png" alt="특허 출원공문" data-i18n-attr="alt:cert.patent.alt">
     </div>
 
     <!-- ── Roadmap ─────────────────────────────────────────── -->
@@ -943,8 +954,8 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <p class="text-amber font-display text-sm tracking-[0.3em] uppercase mb-3">Roadmap</p>
-                <h2 class="text-3xl sm:text-4xl font-bold mb-4">개발 로드맵</h2>
-                <p class="text-gray-400">DECIPHER 시리즈 확장 계획</p>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-i18n="idx.roadmap.title">개발 로드맵</h2>
+                <p class="text-gray-400" data-i18n="idx.roadmap.sub">DECIPHER 시리즈 확장 계획</p>
             </div>
 
             <div class="relative">
@@ -963,7 +974,7 @@
                             <span
                                 class="badge-available text-[10px] font-bold px-2 py-0.5 rounded-full text-white">RELEASED</span>
                         </div>
-                        <p class="text-sm text-gray-400">KakaoTalk 포렌식 도구. 일반 채팅, 오픈 채팅, 이미지 복원, 삭제 메시지 분석까지.</p>
+                        <p class="text-sm text-gray-400" data-i18n="idx.roadmap.ikakao">KakaoTalk 포렌식 도구. 일반 채팅, 오픈 채팅, 이미지 복원, 삭제 메시지 분석까지.</p>
                     </div>
                 </div>
 
@@ -979,7 +990,7 @@
                             <span
                                 class="badge-coming text-[10px] font-bold px-2 py-0.5 rounded-full text-white">PLANNED</span>
                         </div>
-                        <p class="text-sm text-gray-400">LINE 메신저 포렌식 도구. 1:1 채팅, 그룹, 스티커, 미디어 분석.</p>
+                        <p class="text-sm text-gray-400" data-i18n="idx.roadmap.iline">LINE 메신저 포렌식 도구. 1:1 채팅, 그룹, 스티커, 미디어 분석.</p>
                     </div>
                 </div>
 
@@ -996,7 +1007,7 @@
                             <span
                                 class="badge-coming text-[10px] font-bold px-2 py-0.5 rounded-full text-white">PLANNED</span>
                         </div>
-                        <p class="text-sm text-gray-400">Telegram 포렌식 도구. 일반 채팅, 비밀 채팅, 채널 데이터 분석.</p>
+                        <p class="text-sm text-gray-400" data-i18n="idx.roadmap.itg">Telegram 포렌식 도구. 일반 채팅, 비밀 채팅, 채널 데이터 분석.</p>
                     </div>
                 </div>
 
@@ -1008,7 +1019,7 @@
                     </div>
                     <div class="bg-navy-800/20 rounded-xl p-5 border border-white/5 flex-1">
                         <h3 class="font-display font-bold text-gray-400 mb-2">And More...</h3>
-                        <p class="text-sm text-gray-500">iSignal, iWeChat 등 더 많은 iOS 메신저 포렌식 도구가 추가될 예정입니다.</p>
+                        <p class="text-sm text-gray-500" data-i18n="idx.roadmap.more">iSignal, iWeChat 등 더 많은 iOS 메신저 포렌식 도구가 추가될 예정입니다.</p>
                     </div>
                 </div>
             </div>
@@ -1021,18 +1032,18 @@
 
         <div class="relative z-10 max-w-3xl mx-auto px-4 text-center reveal">
             <div class="bg-navy-800/60 rounded-3xl p-10 lg:p-14 border border-white/5 gradient-border">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">지금 바로 시작하세요</h2>
-                <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4" data-i18n="idx.cta.title">지금 바로 시작하세요</h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto" data-i18n-html="idx.cta.desc">
                     DECIPHER iKakao로 iOS 카카오톡 데이터 분석을 경험해보세요.<br>
                     단일 실행 파일, 추가 프로그램 설치 불필요.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="products/ikakao.html"
-                        class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5">
+                        class="px-8 py-3.5 bg-gradient-to-r from-cyber to-cyber-dark text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-cyber/25 transition-all hover:-translate-y-0.5" data-i18n="idx.cta.dl">
                         iKakao 다운로드
                     </a>
                     <a href="#products"
-                        class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5">
+                        class="px-8 py-3.5 border border-white/20 text-white rounded-xl hover:border-cyber/50 hover:text-cyber transition-all hover:-translate-y-0.5" data-i18n="idx.cta.all">
                         모든 제품 보기
                     </a>
                 </div>
@@ -1062,6 +1073,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
 </body>
 
 </html>

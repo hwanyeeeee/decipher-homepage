@@ -5,6 +5,8 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DECIPHER iKakao - KakaoTalk Forensics</title>
+    <style>html.i18n-pending body{visibility:hidden}</style>
+    <script>(function(){try{var l=localStorage.getItem('decipher-lang');if(l){document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('data-lang',l);if(l==='en'){document.documentElement.className+=' i18n-pending';setTimeout(function(){document.documentElement.classList.remove('i18n-pending');},2000);}}}catch(e){}})();</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -88,6 +90,11 @@
                     <a href="../index.html" class="text-sm text-gray-300 hover:text-cyber transition-colors">Home</a>
                     <a href="../index.html#products" class="text-sm text-gray-300 hover:text-cyber transition-colors">Products</a>
                     <a href="#features" class="text-sm text-kakao hover:text-kakao transition-colors font-medium">iKakao</a>
+                    <div class="flex items-center gap-1 text-xs font-semibold">
+                        <button type="button" data-set-lang="ko" class="px-2 py-1 rounded transition-colors">KO</button>
+                        <span class="text-gray-600">/</span>
+                        <button type="button" data-set-lang="en" class="px-2 py-1 rounded transition-colors">EN</button>
+                    </div>
                     <a href="#download" class="px-4 py-2 bg-kakao/10 text-kakao border border-kakao/30 rounded-lg text-sm font-medium hover:bg-kakao/20 transition-all">
                         Download
                     </a>
@@ -115,35 +122,35 @@
                         <span class="ml-3 text-[10px] font-bold px-2.5 py-1 rounded-full text-white uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-emerald-500">Available</span>
                         <span class="text-[10px] font-bold px-2.5 py-1 rounded-full text-white tracking-wider bg-gradient-to-r from-amber-600 to-amber-500 flex items-center gap-1">
                             <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            공식 등록
+                            <span data-i18n="common.registered">공식 등록</span>
                         </span>
                     </div>
 
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-200 mb-4 leading-snug">
+                    <h2 class="text-xl sm:text-2xl font-bold text-gray-200 mb-4 leading-snug" data-i18n-html="ik.hero.h2">
                         iOS 카카오톡 데이터를<br>
-                        <span class="text-kakao">완벽하게 분석</span>합니다.
+                        <span class="text-kakao">정확하게 분석</span>합니다.
                     </h2>
 
-                    <p class="text-gray-400 mb-8 leading-relaxed max-w-lg">
+                    <p class="text-gray-400 mb-8 leading-relaxed max-w-lg" data-i18n="ik.hero.desc">
                         iTunes 백업에서 카카오톡 메시지를 추출하고 분석합니다.
                         일반 채팅, 오픈 채팅, 삭제된 메시지, 이미지까지 -
-                        포렌식 무결성을 유지하며 모든 데이터에 접근합니다.
+                        포렌식 무결성을 유지하며 주요 데이터를 분석합니다.
                     </p>
 
                     <div class="flex flex-wrap gap-3 mb-8">
-                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">일반 채팅</span>
-                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">오픈 채팅</span>
-                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">삭제 메시지</span>
-                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">이미지 복원</span>
-                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">iTunes 백업</span>
-                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300">SQLite 내보내기</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300" data-i18n="ik.tag.general">일반 채팅</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300" data-i18n="ik.tag.open">오픈 채팅</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300" data-i18n="ik.tag.deleted">삭제 메시지</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300" data-i18n="ik.tag.image">이미지 복원</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300" data-i18n="ik.tag.backup">iTunes 백업</span>
+                        <span class="px-3 py-1.5 bg-navy-800 border border-white/10 rounded-lg text-xs text-gray-300" data-i18n="ik.tag.export">SQLite 내보내기</span>
                     </div>
 
                     <div class="flex gap-4">
-                        <a href="#download" class="px-6 py-3 bg-gradient-to-r from-kakao to-yellow-400 text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-kakao/25 transition-all hover:-translate-y-0.5">
+                        <a href="#download" class="px-6 py-3 bg-gradient-to-r from-kakao to-yellow-400 text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-kakao/25 transition-all hover:-translate-y-0.5" data-i18n="ik.hero.dl">
                             다운로드
                         </a>
-                        <a href="#features" class="px-6 py-3 border border-white/20 text-white rounded-xl hover:border-kakao/50 hover:text-kakao transition-all hover:-translate-y-0.5">
+                        <a href="#features" class="px-6 py-3 border border-white/20 text-white rounded-xl hover:border-kakao/50 hover:text-kakao transition-all hover:-translate-y-0.5" data-i18n="ik.hero.feat">
                             기능 보기 →
                         </a>
                     </div>
@@ -165,16 +172,16 @@
                                     <span class="text-xs">👤</span>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-gray-500 mb-1">홍길동 · 2026.02.21 14:32</p>
-                                    <div class="bg-white/10 rounded-lg rounded-tl-none px-3 py-2 text-sm text-gray-300 max-w-xs">
+                                    <p class="text-[10px] text-gray-500 mb-1" data-i18n="ik.mock.u1">홍길동 · 2026.02.21 14:32</p>
+                                    <div class="bg-white/10 rounded-lg rounded-tl-none px-3 py-2 text-sm text-gray-300 max-w-xs" data-i18n="ik.mock.m1">
                                         안녕하세요! 내일 회의 시간 확인해 주세요.
                                     </div>
                                 </div>
                             </div>
                             <div class="flex gap-3 items-start justify-end">
                                 <div>
-                                    <p class="text-[10px] text-gray-500 mb-1 text-right">나 · 2026.02.21 14:33</p>
-                                    <div class="bg-kakao/20 rounded-lg rounded-tr-none px-3 py-2 text-sm text-gray-200 max-w-xs">
+                                    <p class="text-[10px] text-gray-500 mb-1 text-right" data-i18n="ik.mock.u2">나 · 2026.02.21 14:33</p>
+                                    <div class="bg-kakao/20 rounded-lg rounded-tr-none px-3 py-2 text-sm text-gray-200 max-w-xs" data-i18n="ik.mock.m2">
                                         네, 오후 3시에 만나요! 📋
                                     </div>
                                 </div>
@@ -184,9 +191,9 @@
                                     <span class="text-xs">🗑️</span>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-gray-500 mb-1">김영희 · 2026.02.21 15:01</p>
+                                    <p class="text-[10px] text-gray-500 mb-1" data-i18n="ik.mock.u3">김영희 · 2026.02.21 15:01</p>
                                     <div class="bg-red-500/10 border border-red-500/20 rounded-lg rounded-tl-none px-3 py-2 text-sm text-red-300 max-w-xs">
-                                        <span class="text-[10px] text-red-400 font-mono">[DELETED]</span> 삭제된 메시지가 복원되었습니다
+                                        <span class="text-[10px] text-red-400 font-mono">[DELETED]</span><span data-i18n="ik.mock.deleted"> 삭제된 메시지가 복원되었습니다</span>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +202,7 @@
                                     <span class="text-xs">👤</span>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-gray-500 mb-1">홍길동 · 2026.02.21 15:15</p>
+                                    <p class="text-[10px] text-gray-500 mb-1" data-i18n="ik.mock.u4">홍길동 · 2026.02.21 15:15</p>
                                     <div class="bg-white/5 rounded-lg rounded-tl-none p-2 max-w-xs">
                                         <div class="w-40 h-24 bg-navy-700 rounded flex items-center justify-center text-gray-500 text-xs">
                                             🖼️ image_recovered.jpg
@@ -215,21 +222,21 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <p class="text-kakao font-display text-sm tracking-[0.3em] uppercase mb-3">Features</p>
-                <h2 class="text-3xl font-bold mb-4">주요 기능</h2>
+                <h2 class="text-3xl font-bold mb-4" data-i18n="ik.feat.title">주요 기능</h2>
             </div>
 
             <!-- Tab Navigation -->
             <div class="flex flex-wrap gap-2 justify-center mb-10 reveal">
-                <button class="tab-btn active px-4 py-2 rounded-lg border border-white/10 text-sm font-medium" data-tab="general">
+                <button class="tab-btn active px-4 py-2 rounded-lg border border-white/10 text-sm font-medium" data-tab="general" data-i18n="ik.tag.general">
                     일반 채팅
                 </button>
-                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="openchat">
+                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="openchat" data-i18n="ik.tag.open">
                     오픈 채팅
                 </button>
-                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="media">
+                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="media" data-i18n="ik.tab.media">
                     미디어 & 이미지
                 </button>
-                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="analysis">
+                <button class="tab-btn px-4 py-2 rounded-lg border border-white/10 text-sm font-medium text-gray-400" data-tab="analysis" data-i18n="ik.tab.analysis">
                     분석 & 내보내기
                 </button>
             </div>
@@ -242,36 +249,36 @@
                             <div class="w-8 h-8 rounded-lg bg-kakao/10 flex items-center justify-center text-kakao">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
                             </div>
-                            <h3 class="font-semibold">메시지 분석</h3>
+                            <h3 class="font-semibold" data-i18n="ik.g1.h">메시지 분석</h3>
                         </div>
-                        <p class="text-sm text-gray-400">Message.sqlite과 Talk.sqlite에서 모든 채팅 메시지를 추출하고 분석합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.g1.d">Message.sqlite과 Talk.sqlite에서 모든 채팅 메시지를 추출하고 분석합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 reveal">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                             </div>
-                            <h3 class="font-semibold">삭제 메시지 복원</h3>
+                            <h3 class="font-semibold" data-i18n="ik.g2.h">삭제 메시지 복원</h3>
                         </div>
-                        <p class="text-sm text-gray-400">"나에게만 삭제"와 "전체 삭제"를 정확히 구분하여 삭제된 메시지를 복원합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.g2.d">"나에게만 삭제"와 "전체 삭제"를 정확히 구분하고, 잔존 데이터를 기반으로 삭제된 메시지를 복원합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 reveal">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                             </div>
-                            <h3 class="font-semibold">사용자 ID 매핑</h3>
+                            <h3 class="font-semibold" data-i18n="ik.g3.h">사용자 ID 매핑</h3>
                         </div>
-                        <p class="text-sm text-gray-400">친구 데이터베이스와 교차 참조하여 사용자 ID를 실제 이름과 매핑합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.g3.d">친구 데이터베이스와 교차 참조하여 사용자 ID를 실제 이름과 매핑합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5 reveal">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-amber/10 flex items-center justify-center text-amber">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                             </div>
-                            <h3 class="font-semibold">암호화 백업 지원</h3>
+                            <h3 class="font-semibold" data-i18n="ik.g4.h">암호화 백업 지원</h3>
                         </div>
-                        <p class="text-sm text-gray-400">iTunes 암호화 백업과 비암호화 백업 모두 자동으로 처리합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.g4.d">iTunes 암호화 백업과 비암호화 백업을 자동으로 처리합니다. 오픈 채팅 복호화에는 키체인이 포함된 암호화 백업이 필요합니다.</p>
                     </div>
                 </div>
             </div>
@@ -282,30 +289,30 @@
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-cyber/10 flex items-center justify-center text-cyber">💬</div>
-                            <h3 class="font-semibold">오픈 채팅 분석</h3>
+                            <h3 class="font-semibold" data-i18n="ik.o1.h">오픈 채팅 분석</h3>
                         </div>
-                        <p class="text-sm text-gray-400">별도로 암호화된 OpenChatMessage.sqlite 데이터베이스를 분석합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.o1.d">별도로 암호화된 OpenChatMessage.sqlite 데이터베이스를 분석합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">🔑</div>
-                            <h3 class="font-semibold">키체인 추출</h3>
+                            <h3 class="font-semibold" data-i18n="ik.o2.h">키체인 추출</h3>
                         </div>
-                        <p class="text-sm text-gray-400">iOS 키체인에서 오픈 채팅 분석에 필요한 키를 자동으로 추출합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.o2.d">iOS 키체인에서 오픈 채팅 분석에 필요한 키를 자동으로 추출합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">📊</div>
-                            <h3 class="font-semibold">대화 이벤트</h3>
+                            <h3 class="font-semibold" data-i18n="ik.o3.h">대화 이벤트</h3>
                         </div>
-                        <p class="text-sm text-gray-400">입장, 퇴장, 강퇴, 초대 등 대화 이벤트를 사용자 이름과 함께 표시합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.o3.d">입장, 퇴장, 강퇴, 초대 등 대화 이벤트를 사용자 이름과 함께 표시합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">🔍</div>
-                            <h3 class="font-semibold">DB 조인 분석</h3>
+                            <h3 class="font-semibold" data-i18n="ik.o4.h">DB 조인 분석</h3>
                         </div>
-                        <p class="text-sm text-gray-400">오픈 채팅 DB의 복잡한 관계를 자동으로 해석하고 연결합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.o4.d">오픈 채팅 DB의 복잡한 관계를 자동으로 해석하고 연결합니다.</p>
                     </div>
                 </div>
             </div>
@@ -316,30 +323,30 @@
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">🖼️</div>
-                            <h3 class="font-semibold">이미지 자동 매핑</h3>
+                            <h3 class="font-semibold" data-i18n="ik.m1.h">이미지 자동 매핑</h3>
                         </div>
-                        <p class="text-sm text-gray-400">암호화된 이미지 파일을 원본 메시지와 자동으로 매핑하여 표시합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.m1.d">이미지 파일을 원본 메시지(attachment 레코드)와 자동으로 매핑하여 표시합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400">🔎</div>
-                            <h3 class="font-semibold">이미지 뷰어</h3>
+                            <h3 class="font-semibold" data-i18n="ik.m2.h">이미지 뷰어</h3>
                         </div>
-                        <p class="text-sm text-gray-400">썸네일 미리보기와 원본 이미지 확대 뷰어를 제공합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.m2.d">썸네일 미리보기와 원본 이미지 확대 뷰어를 제공합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400">📁</div>
-                            <h3 class="font-semibold">채팅 디렉토리 복원</h3>
+                            <h3 class="font-semibold" data-i18n="ik.m3.h">채팅 디렉토리 복원</h3>
                         </div>
-                        <p class="text-sm text-gray-400">Manifest.db 기반으로 백업 구조를 해석하고 채팅 디렉토리를 재구성합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.m3.d">Manifest.db 기반으로 백업 구조를 해석하고 채팅 디렉토리를 재구성합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">📎</div>
-                            <h3 class="font-semibold">다양한 메시지 타입</h3>
+                            <h3 class="font-semibold" data-i18n="ik.m4.h">다양한 메시지 타입</h3>
                         </div>
-                        <p class="text-sm text-gray-400">사진, 동영상, 음성, 위치, 연락처, 이모티콘 등 모든 메시지 타입을 처리합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.m4.d">사진, 동영상, 음성, 위치, 연락처, 이모티콘 등 모든 메시지 타입을 처리합니다.</p>
                     </div>
                 </div>
             </div>
@@ -350,30 +357,30 @@
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">🔍</div>
-                            <h3 class="font-semibold">강력한 검색</h3>
+                            <h3 class="font-semibold" data-i18n="ik.a1.h">강력한 검색</h3>
                         </div>
-                        <p class="text-sm text-gray-400">메시지, 채팅방, 친구 검색. 하이라이트 표시와 디바운스로 빠른 검색.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.a1.d">메시지, 채팅방, 친구 검색. 하이라이트 표시와 디바운스로 빠른 검색.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400">📊</div>
-                            <h3 class="font-semibold">분석 실패 검사</h3>
+                            <h3 class="font-semibold" data-i18n="ik.a2.h">분석 실패 검사</h3>
                         </div>
-                        <p class="text-sm text-gray-400">분석에 실패한 메시지를 채팅방별로 정리하여 보여줍니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.a2.d">분석에 실패한 메시지를 채팅방별로 정리하여 보여줍니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400">💾</div>
-                            <h3 class="font-semibold">SQLite 내보내기</h3>
+                            <h3 class="font-semibold" data-i18n="ik.a3.h">SQLite 내보내기</h3>
                         </div>
-                        <p class="text-sm text-gray-400">분석 결과를 독립 SQLite 데이터베이스로 내보내 안전하게 보관합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.a3.d">분석 결과를 독립 SQLite 데이터베이스로 내보내 안전하게 보관합니다.</p>
                     </div>
                     <div class="bg-navy-800/40 rounded-xl p-6 border border-white/5">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-8 h-8 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400">⏱️</div>
-                            <h3 class="font-semibold">타임라인 재구성</h3>
+                            <h3 class="font-semibold" data-i18n="ik.a4.h">타임라인 재구성</h3>
                         </div>
-                        <p class="text-sm text-gray-400">복잡한 검색 필터링과 함께 대화의 시간순 타임라인을 재구성합니다.</p>
+                        <p class="text-sm text-gray-400" data-i18n="ik.a4.d">복잡한 검색 필터링과 함께 대화의 시간순 타임라인을 재구성합니다.</p>
                     </div>
                 </div>
             </div>
@@ -388,12 +395,12 @@
                         <svg class="w-7 h-7 text-amber" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     </div>
                     <div class="text-center sm:text-left">
-                        <h3 class="font-semibold text-white text-lg mb-1">한국저작권위원회 공식 등록 프로그램</h3>
-                        <p class="text-sm text-gray-400 mb-2">DECIPHER-iKakao는 컴퓨터프로그램저작물로 정식 등록되었습니다.</p>
+                        <h3 class="font-semibold text-white text-lg mb-1" data-i18n="ik.cert.kcc.h">한국저작권위원회 공식 등록 프로그램</h3>
+                        <p class="text-sm text-gray-400 mb-2" data-i18n="ik.cert.kcc.d">DECIPHER-iKakao는 컴퓨터프로그램저작물로 정식 등록되었습니다.</p>
                         <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-500 justify-center sm:justify-start">
-                            <span>등록번호 <span class="text-gray-500">비공개</span></span>
-                            <span>등록일 <span class="text-gray-300">2026.02.26</span></span>
-                            <span>저작자 <span class="text-gray-500">비공개</span></span>
+                            <span data-i18n-html="ik.cert.regno_line">등록번호 <span class="text-gray-500">비공개</span></span>
+                            <span data-i18n-html="ik.cert.regdate_line">등록일 <span class="text-gray-300">2026.02.26</span></span>
+                            <span data-i18n-html="ik.cert.author_line">저작자 <span class="text-gray-500">비공개</span></span>
                         </div>
                     </div>
                 </div>
@@ -409,14 +416,14 @@
                     </div>
                     <div class="text-center sm:text-left flex-1">
                         <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
-                            <h3 class="font-semibold text-white text-lg">특허 출원 — iKakao 핵심 기술</h3>
-                            <span class="badge-certified text-[9px] font-bold px-2 py-0.5 rounded-full text-white tracking-wider uppercase">출원 완료</span>
+                            <h3 class="font-semibold text-white text-lg" data-i18n="ik.cert.patent.h">특허 출원 — iKakao 핵심 기술</h3>
+                            <span class="badge-certified text-[9px] font-bold px-2 py-0.5 rounded-full text-white tracking-wider uppercase" data-i18n="ik.cert.patent.badge">출원 완료</span>
                         </div>
-                        <p class="text-sm text-gray-400 mb-2">iOS 키체인 및 SQLCipher 기반의 카카오톡 오픈채팅 복호화 및 삭제 데이터 복구 방법</p>
+                        <p class="text-sm text-gray-400 mb-2" data-i18n="cert.invtitle.val">iOS 키체인 및 SQLCipher 기반의 카카오톡 오픈채팅 복호화 및 삭제 데이터 복구 방법</p>
                         <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-500 justify-center sm:justify-start">
-                            <span>출원번호 <span class="text-gray-500">비공개</span></span>
-                            <span>출원일 <span class="text-gray-300">2026.03.27</span></span>
-                            <span>출원인 <span class="text-gray-500">비공개</span></span>
+                            <span data-i18n-html="ik.cert.appno_line">출원번호 <span class="text-gray-500">비공개</span></span>
+                            <span data-i18n-html="ik.cert.filedate_line">출원일 <span class="text-gray-300">2026.03.27</span></span>
+                            <span data-i18n-html="ik.cert.applicant_line">출원인 <span class="text-gray-500">비공개</span></span>
                         </div>
                     </div>
                     <div class="text-amber/60 group-hover:text-amber group-hover:translate-x-1 transition-all flex-shrink-0 hidden sm:block">
@@ -439,26 +446,26 @@
                 <h2 class="text-2xl sm:text-3xl font-bold mb-2">
                     DECIPHER <span class="text-kakao">iKakao</span>
                 </h2>
-                <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto" data-i18n="ik.dl.sub">
                     Windows 전용. 단일 실행 파일로 별도 설치가 필요 없습니다.
                 </p>
 
                 <div class="bg-navy-900/60 rounded-xl p-5 mb-8 text-left max-w-sm mx-auto">
-                    <h4 class="text-sm font-semibold text-gray-300 mb-3">시스템 요구사항</h4>
+                    <h4 class="text-sm font-semibold text-gray-300 mb-3" data-i18n="ik.dl.sysreq">시스템 요구사항</h4>
                     <ul class="space-y-2 text-xs text-gray-400">
                         <li class="flex items-center gap-2">
                             <span class="text-kakao">•</span> Windows 10/11
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="text-kakao">•</span> iTunes 설치 (백업용)
+                            <span class="text-kakao">•</span> <span data-i18n="ik.dl.req2">iTunes 설치 (백업용)</span>
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="text-kakao">•</span> iOS 기기 백업 파일
+                            <span class="text-kakao">•</span> <span data-i18n="ik.dl.req3">iOS 기기 백업 파일</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-lang-show="ko">
                     <a href="../assets/DECIPHER-iKakao.zip" download class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-kakao to-yellow-400 text-navy-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-kakao/25 transition-all hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
@@ -473,12 +480,28 @@
                         사용법 PDF 다운로드
                     </a>
                 </div>
-                <p class="text-xs text-gray-600 mt-3">v1.0 · Windows · Single EXE (ZIP 압축)</p>
-                <div class="mt-5 max-w-md mx-auto bg-navy-900/60 border border-amber/10 rounded-lg p-4 text-left">
-                    <p class="text-xs text-amber/90 font-semibold mb-1.5">⚠️ 설치 안내</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-lang-show="en" style="display:none">
+                    <span class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-kakao/40 text-navy-900/60 font-semibold rounded-xl cursor-not-allowed select-none" aria-disabled="true">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        <span data-i18n="ik.dl.en.btn.zip">Download DECIPHER-iKakao (EN)</span>
+                    </span>
+                    <span class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-white/10 text-gray-500 rounded-xl cursor-not-allowed select-none" aria-disabled="true">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 3v5a1 1 0 001 1h5"/>
+                        </svg>
+                        <span data-i18n="ik.dl.en.btn.pdf">English User Guide (PDF)</span>
+                    </span>
+                </div>
+                <p class="text-xs text-gray-600 mt-3" data-lang-show="ko" data-i18n="ik.dl.ver">v1.0 · Windows · Single EXE (ZIP 압축)</p>
+                <p class="text-xs text-amber/80 mt-3" data-lang-show="en" style="display:none" data-i18n="ik.dl.en.soon">The English build and guide are in preparation — coming soon.</p>
+                <div class="mt-5 max-w-md mx-auto bg-navy-900/60 border border-amber/10 rounded-lg p-4 text-left" data-lang-show="ko">
+                    <p class="text-xs text-amber/90 font-semibold mb-1.5" data-i18n="ik.dl.install.h">⚠️ 설치 안내</p>
                     <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside leading-relaxed">
-                        <li>ZIP 다운로드 후 압축을 해제합니다.</li>
-                        <li>실행 시 "Windows가 PC를 보호했습니다" 경고가 뜨면 <span class="text-gray-300">추가 정보 → 실행</span>을 누릅니다.</li>
+                        <li data-i18n="ik.dl.install.1">ZIP 다운로드 후 압축을 해제합니다.</li>
+                        <li data-i18n-html="ik.dl.install.2">실행 시 "Windows가 PC를 보호했습니다" 경고가 뜨면 <span class="text-gray-300">추가 정보 → 실행</span>을 누릅니다.</li>
                     </ol>
                 </div>
             </div>
@@ -525,5 +548,6 @@
             });
         });
     </script>
+    <script src="../js/i18n.js"></script>
 </body>
 </html>
