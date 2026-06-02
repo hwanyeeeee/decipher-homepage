@@ -192,7 +192,7 @@
         'ik.dl.install.2': "If a \"Windows protected your PC\" warning appears, click <span class='text-gray-300'>More info → Run</span>.",
         'ik.dl.en.btn.zip': 'Download DECIPHER-iKakao (EN)',
         'ik.dl.en.btn.pdf': 'English User Guide (PDF)',
-        'ik.dl.en.soon': 'The English build and guide are in preparation — coming soon.',
+        'ik.dl.en.soon': 'The English user guide (PDF) is in preparation. The tool above is ready to download.',
 
         // iline / itelegram
         'il.desc': 'A forensic tool for analyzing iOS LINE messenger backup data.<br>Forensically extracts 1:1 chats, groups, stickers, and media files.',
