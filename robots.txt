@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hwanyeeeee.github.io/decipher-homepage/sitemap.xml
